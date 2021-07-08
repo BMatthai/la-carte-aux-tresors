@@ -1,10 +1,10 @@
-package main;
+package model;
 import java.util.List;
-
-import model.Entity;
 
 public class Map {
 
+	int width;
+	int height;
 	private List<Entity> entities;
 
 }

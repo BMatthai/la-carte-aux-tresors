@@ -12,9 +12,7 @@ public class MapReader {
 		try {
 			bufferedReader = new BufferedReader(new FileReader(path));
 			String curLine = bufferedReader.readLine();
-			while (curLine != null) {
-				
-				
+			while (curLine != null) {				
 				parseLine(curLine);
 				
 				curLine = bufferedReader.readLine();
@@ -22,12 +20,17 @@ public class MapReader {
 			bufferedReader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		
-		
+		}	
 	}
 
 	private static void parseLine(String line) {
+		if (line.isEmpty()) {
+			System.out.println("empty line");
+		}
+		
+		
+		
+		
 		System.out.println(line);
 		
 	}
