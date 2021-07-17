@@ -3,23 +3,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import main.MapReader;
+import main.DefaultMapReader;
 
-import main.MapReader;
+import main.DefaultMapReader;
 
-class MapReaderTest {
+class DefaultMapReaderTest {
 
-	@Test
-	void testReadMap() {
-		
-		MapReader.readMap("blablabla");
-		
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	void testParseLine() {
-		
-	}
+//	@Test
+//	void testReadMap() {
+//		
+//		DefaultMapReader.readMap("blablabla");
+//		
+//		fail("Not yet implemented");
+//	}
+//	
+//	@Test
+//	void testParseLine() {
+//		
+//	}
 
 }
