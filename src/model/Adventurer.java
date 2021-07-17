@@ -16,9 +16,14 @@ public class Adventurer extends Entity {
 	}
 
 	@Override
-	public String toString() {
+	public String textualRepresentation() {
 		String string = String.format("A - %s - %d - %d - %d - %s", name, pos_x, pos_y, orientation, sequence);
-		
+		return string;
+	}
+
+	@Override
+	public String defaultRepresentation() {
+		String string = String.format("A(%s)\t", name);
 		return string;
 	}
 	

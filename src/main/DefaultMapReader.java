@@ -7,7 +7,7 @@ import java.io.IOException;
 import model.LCATMap;
 import model.Entity;
 import model.Mountain;
-import model.Treasure;
+import model.Treasures;
 import model.Adventurer;
 
 import misc.Constants;
@@ -79,13 +79,13 @@ public class DefaultMapReader implements IMapReader {
 		return new Mountain(pos_x, pos_y);
 	}
 	
-	private Treasure parseTreasure(String mapLine) {
+	private Treasures parseTreasure(String mapLine) {
 		String[] parts = mapLine.split(" - ");
 
 		int pos_x = Integer.parseInt(parts[1]);
 		int pos_y = Integer.parseInt(parts[2]);
-		
-		return new Treasure(pos_x, pos_y);
+		int number = Integer.parseInt(parts[3]);
+		return new Treasures(pos_x, pos_y, number);
 	}
 	
 	private int orientationAsIntFromString(String orientation) {

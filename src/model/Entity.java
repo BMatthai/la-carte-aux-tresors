@@ -27,6 +27,8 @@ public abstract class Entity {
 		this.pos_y = pos_y;
 	}
 
-	public abstract String toString();
+//	public abstract String toString();
+	public abstract String textualRepresentation();
+	public abstract String defaultRepresentation();
 	
 }
