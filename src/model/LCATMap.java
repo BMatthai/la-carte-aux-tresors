@@ -8,18 +8,17 @@ public class LCATMap {
 
 	int width;
 	int height;
-	private Map<Position, List<Entity>> entities;
+	private List<Entity> entities;
 	
 	public LCATMap(int width, int height) {
 		super();
 		this.width = width;
 		this.height = height;
-		this.entities = new HashMap<Position, List<Entity>>();
+		this.entities = new ArrayList<Entity>();
 	}
 
-	public void addEntity(Position position, Entity entity) {
-		this.entities.get(position).;
-//		put(position, entity);
+	public void addEntity(Entity entity) {
+		this.entities.add(entity);
 	}
 
 	public int getWidth() {
@@ -44,11 +43,11 @@ public class LCATMap {
 		return string;
 	}
 
-	public Map<Position, List<Entity>> getEntities() {
+	public List<Entity> getEntities() {
 		return entities;
 	}
 
-	public void setEntities(Map<Position, List<Entity>> entities) {
+	public void setEntities(List<Entity> entities) {
 		this.entities = entities;
 	}
 	
