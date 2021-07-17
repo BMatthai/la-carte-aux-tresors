@@ -18,8 +18,7 @@ public class LCATMap {
 	}
 
 	public void addEntity(Position position, Entity entity) {
-		this.entities.get(position).;
-//		put(position, entity);
+		this.entities.get(position).add(entity);
 	}
 
 	public int getWidth() {

@@ -72,11 +72,12 @@ public class DefaultMapReader implements IMapReader {
 		return map;
 	}
 	
-	private Mountain parseMountain(String mapLine) {
+	private void parseMountain(String mapLine) {
 		String[] parts = mapLine.split(" - ");
 		int pos_x = Integer.parseInt(parts[1]);
 		int pos_y = Integer.parseInt(parts[2]);
 		
+		this.map.addEntity();
 		return new Mountain(new Position(pos_x, pos_y));
 	}
 	
