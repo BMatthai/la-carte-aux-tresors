@@ -9,17 +9,26 @@ import java.util.List;
 import misc.Constants;
 
 
-public class DefaultProcedureExecuter {
+public class DefaultProcedureExecuter implements IProcedureExecuter {
 
-	public void executeProcedure(LCATMap map) {
+	public LCATMap executeProcedure(LCATMap map) {
 		LCATMap outMap = new LCATMap(map);
 	
 		List<Adventurer> adventurers = outMap.getAdventurers();
+		int selectedAdventurer;
 		
-		//move(adventurers.get(0));
+		selectedAdventurer = 0;
+		while(!isProcedureFinished(adventurers)) {
+			adventurerAction(adventurers.get(selectedAdventurer), outMap);
+
+			selectedAdventurer += 1;
+			selectedAdventurer %= adventurers.size();
+		}
+		
+		return outMap;
 	}
 	
-	public void adventurerAction(Adventurer adventurer, LCATMap map) {
+	private void adventurerAction(Adventurer adventurer, LCATMap map) {
 		int index = adventurer.getCurIndexInSequence();
 		char action = adventurer.getSequence().charAt(index);
 		
@@ -37,25 +46,36 @@ public class DefaultProcedureExecuter {
 		adventurer.incrementIndexInSequence();
 	}
 	
-	public void goForward(Adventurer adventurer, LCATMap map) {
+	private void goForward(Adventurer adventurer, LCATMap map) {
 		int orientation = adventurer.getOrientation();
 		int cur_pos_x = adventurer.getPos_x();
 		int cur_pos_y = adventurer.getPos_y();
 				
+		int new_pos_x = cur_pos_x;
+		int new_pos_y = cur_pos_y;
 		switch(orientation) {
 			case Constants.ORIENTATION_WEST:
-				if (map.isPositionFree(cur_pos_x - 1, cur_pos_y));
+				new_pos_x = cur_pos_x - 1;
 				break;
 			case Constants.ORIENTATION_EAST:
-				if (map.isPositionFree(cur_pos_x + 1, cur_pos_y));
+				new_pos_x = cur_pos_x + 1;
 				break;
 			case Constants.ORIENTATION_NORTH:
-				if (map.isPositionFree(cur_pos_x, cur_pos_y - 1));
+				new_pos_y = cur_pos_y - 1;
 				break;	    
 			case Constants.ORIENTATION_SOUTH:
-				if (map.isPositionFree(cur_pos_x, cur_pos_y + 1));
+				new_pos_y = cur_pos_y + 1;
 				break;
-			default:   
+			default:
 		}
+		if (map.isPositionFree(new_pos_x, new_pos_y)) adventurer.setPosition(new_pos_x, new_pos_y);
+		
 	}
+	
+	private boolean isProcedureFinished(List<Adventurer> adventurers) {
+		int index_sum = adventurers.stream().mapToInt(l -> l.getCurIndexInSequence()).sum();
+		int sequence_length_sum = adventurers.stream().mapToInt(l -> l.getSequence().length()).sum();
+		
+		return index_sum == sequence_length_sum;		
+	}	
 }

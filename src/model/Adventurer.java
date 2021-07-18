@@ -29,11 +29,17 @@ public class Adventurer extends Entity {
 	}
 	
 	public void rotate(int rotation) {
-		orientation += 1 % 4;
+		orientation += 1;
+		orientation %= 4;
 	}
 	
 	public void incrementIndexInSequence() {
 		curIndexInSequence += 1;
+	}
+	
+	public void setPosition(int pos_x, int pos_y) {
+		this.pos_x = pos_x;
+		this.pos_y = pos_y;
 	}
 
 	public String getName() {
