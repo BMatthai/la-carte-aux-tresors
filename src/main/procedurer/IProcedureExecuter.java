@@ -4,5 +4,5 @@ import model.TreasureMap;
 
 public interface IProcedureExecuter {
 
-	public TreasureMap executeProcedure(TreasureMap map);
+	TreasureMap executeProcedure(TreasureMap map);
 }

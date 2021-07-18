@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import main.mapdisplayer.DefaultMapDisplayer;
 import main.mapdisplayer.IMapDisplayer;
 import main.mapdisplayer.TextualMapDisplayer;
 import main.mapreader.DefaultMapReader;
@@ -22,16 +21,10 @@ class DefaultMapDisplayerTest {
 		
 		IMapDisplayer mapDisplayer = new TextualMapDisplayer();
 		
-		String str1 = "C - 3 - 4\n"
-				+ "M - 1 - 0\n"
-				+ "M - 2 - 1\n"
-				+ "T - 0 - 3 - 2\n"
-				+ "T - 1 - 3 - 3\n"
-				+ "A - Lara - 1 - 1 - 0 - AADADAGGA";
+		String readString = mapDisplayer.displayMap(map);
+		String expectedString = String.join("\n", "C - 3 - 4", "M - 1 - 0", "M - 2 - 1", "T - 0 - 3 - 2","T - 1 - 3 - 3","A - Lara - 1 - 1 - 0 - AADADAGGA\n");
 		
-		String str2 = mapDisplayer.displayMap(map);
-		
-		assertEquals(str1, str2);
+		assertEquals(readString, expectedString);
 		
 	}
 

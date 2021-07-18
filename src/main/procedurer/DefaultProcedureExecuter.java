@@ -24,7 +24,6 @@ public class DefaultProcedureExecuter implements IProcedureExecuter {
 			selectedAdventurer += 1;
 			selectedAdventurer %= adventurers.size();
 		}
-		
 		return outMap;
 	}
 	
@@ -48,8 +47,8 @@ public class DefaultProcedureExecuter implements IProcedureExecuter {
 	
 	private void goForward(Adventurer adventurer, TreasureMap map) {
 		int orientation = adventurer.getOrientation();
-		int cur_pos_x = adventurer.getPos_x();
-		int cur_pos_y = adventurer.getPos_y();
+		int cur_pos_x = adventurer.getPositionX();
+		int cur_pos_y = adventurer.getPositionY();
 				
 		int new_pos_x = cur_pos_x;
 		int new_pos_y = cur_pos_y;

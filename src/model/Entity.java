@@ -5,39 +5,25 @@ import main.mapdisplayer.IRepresentableAsText;
 
 public abstract class Entity implements IRepresentableAsText, IRepresentableAsMap {
 
-	protected int pos_x;
-	protected int pos_y;
+	protected int positionX;
+	protected int positionY;
 	protected boolean isBlockingCase;
 	
-	public Entity(int pos_x, int pos_y) {
+	public Entity(int positionX, int positionY) {
 		super();
-		this.pos_x = pos_x;
-		this.pos_y = pos_y;
+		this.positionX = positionX;
+		this.positionY = positionY;
 	}
 
-	public int getPos_x() {
-		return pos_x;
+	public int getPositionX() {
+		return positionX;
 	}
 
-	public void setPos_x(int pos_x) {
-		this.pos_x = pos_x;
-	}
-
-	public int getPos_y() {
-		return pos_y;
-	}
-
-	public void setPos_y(int pos_y) {
-		this.pos_y = pos_y;
+	public int getPositionY() {
+		return positionY;
 	}
 	
-
 	public boolean isBlockingCase() {
 		return isBlockingCase;
 	}
-
-	public void setBlockingCase(boolean isBlockingCase) {
-		this.isBlockingCase = isBlockingCase;
-	}
-
 }

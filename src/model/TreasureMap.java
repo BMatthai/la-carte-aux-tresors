@@ -7,8 +7,8 @@ import main.mapdisplayer.IRepresentableAsText;
 
 public class TreasureMap implements IRepresentableAsText {
 
-	int width;
-	int height;
+	private int width;
+	private int height;
 	private List<Entity> entities;
 	
 	public TreasureMap(int width, int height) {
@@ -25,6 +25,7 @@ public class TreasureMap implements IRepresentableAsText {
 		this.entities = originalMap.entities;	
 	}
 
+	// TODO Factor the following methods
 	public List<Adventurer> getAdventurers() {
 		return this.entities
 				.stream()
@@ -57,48 +58,35 @@ public class TreasureMap implements IRepresentableAsText {
 		
 		return entities
 				.stream()
-				.filter(l -> l.isBlockingCase() && l.getPos_x() == x && l.getPos_y() == y)
+				.filter(l -> l.isBlockingCase() && l.getPositionX() == x && l.getPositionY() == y)
 				.count() < 1;	
 	}
 	
 	public boolean isPositionATreasure(int x ,int y) {
 		return getTreasures()
 				.stream()
-				.filter(l -> l.getPos_x() == x && l.getPos_y() == y)
+				.filter(l -> l.getPositionX() == x && l.getPositionY() == y)
 				.count() > 0;
 	}
 
-	
 	public void addEntity(Entity entity) {
 		this.entities.add(entity);
+	}
+	
+	@Override
+	public String textualRepresentation() {
+		return String.format("C - %d - %d", width, height);
 	}
 
 	public int getWidth() {
 		return width;
 	}
 
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
 	public int getHeight() {
 		return height;
 	}
 
-	public void setHeight(int height) {
-		this.height = height;
-	}
-	
 	public List<Entity> getEntities() {
 		return entities;
-	}
-
-	public void setEntities(List<Entity> entities) {
-		this.entities = entities;
-	}
-	
-	@Override
-	public String textualRepresentation() {
-		return String.format("C - %d - %d", width, height);
 	}
 }

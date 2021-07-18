@@ -4,6 +4,6 @@ import model.TreasureMap;
 
 public interface IMapReader {
 
-	public TreasureMap readMap(String path);
+	TreasureMap readMap(String path);
 
 }

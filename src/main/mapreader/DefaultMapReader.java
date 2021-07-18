@@ -16,31 +16,21 @@ public class DefaultMapReader implements IMapReader {
 	private TreasureMap map;
 	
 	public TreasureMap readMap(String path) {
-		
-		BufferedReader bufferedReader;
-		
-		try {
-			bufferedReader = new BufferedReader(new FileReader(path));
+				
+		try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
 			String curLine = bufferedReader.readLine();
 			while (curLine != null) {				
 				parseLine(curLine);
-				
 				curLine = bufferedReader.readLine();
 			}
-			bufferedReader.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new MapReadException(e);
 		}	
 		
 		return map;
 	}
 
 	private void parseLine(String line) {
-
-		if (line.isEmpty()) {
-			System.out.println("empty line");
-		}
-		
 		char lineHeader = line.charAt(0);
 		switch(lineHeader) {
 		  case 'C':
@@ -59,32 +49,29 @@ public class DefaultMapReader implements IMapReader {
 		}				
 	}
 	
-	private TreasureMap parseMap(String mapLine) {
-		TreasureMap map;
-		
+	private TreasureMap parseMap(String mapLine) {		
 		String[] parts = mapLine.split(" - ");
 		int width = Integer.parseInt(parts[1]);
 		int height = Integer.parseInt(parts[2]);
-		map = new TreasureMap(width, height);
 
-		return map;
+		return new TreasureMap(width, height);
 	}
 	
 	private Mountain parseMountain(String mapLine) {
 		String[] parts = mapLine.split(" - ");
-		int pos_x = Integer.parseInt(parts[1]);
-		int pos_y = Integer.parseInt(parts[2]);
+		int positionX = Integer.parseInt(parts[1]);
+		int positionY = Integer.parseInt(parts[2]);
 		
-		return new Mountain(pos_x, pos_y);
+		return new Mountain(positionX, positionY);
 	}
 	
 	private Treasures parseTreasure(String mapLine) {
 		String[] parts = mapLine.split(" - ");
 
-		int pos_x = Integer.parseInt(parts[1]);
-		int pos_y = Integer.parseInt(parts[2]);
+		int positionX = Integer.parseInt(parts[1]);
+		int positionY = Integer.parseInt(parts[2]);
 		int number = Integer.parseInt(parts[3]);
-		return new Treasures(pos_x, pos_y, number);
+		return new Treasures(positionX, positionY, number);
 	}
 	
 	private int orientationAsIntFromString(String orientation) {
@@ -112,12 +99,12 @@ public class DefaultMapReader implements IMapReader {
 		String[] parts = mapLine.split(" - ");
 
 		String name = parts[1];
-		int pos_x = Integer.parseInt(parts[2]);
-		int pos_y = Integer.parseInt(parts[3]);
+		int positionX = Integer.parseInt(parts[2]);
+		int positionY = Integer.parseInt(parts[3]);
 		String orientation = parts[4];
 		String sequence = parts[5];
 		
 		int orientationAsInt = orientationAsIntFromString(orientation);
-		return new Adventurer(name, pos_x, pos_y, orientationAsInt, sequence);
+		return new Adventurer(name, positionX, positionY, orientationAsInt, sequence);
 	}	
 }

@@ -2,6 +2,7 @@ package main.mapdisplayer;
 
 import java.util.List;
 
+import helper.TextHelper;
 import model.Entity;
 import model.TreasureMap;
 
@@ -9,6 +10,7 @@ public class DefaultMapDisplayer implements IMapDisplayer {
 
 	@Override
 	public String displayMap(TreasureMap map) {
+		
 		int width = map.getWidth();
 		int height = map.getHeight();
 		List<Entity> entities = map.getEntities();
@@ -21,7 +23,7 @@ public class DefaultMapDisplayer implements IMapDisplayer {
 				
 				for (int k = 0; k < entities.size(); k++) {
 					curEntity = entities.get(k);
-					if (curEntity.getPos_x() == j && curEntity.getPos_y() == i) {
+					if (curEntity.getPositionX() == j && curEntity.getPositionY() == i) {
 						mapAsString += curEntity.defaultRepresentation();
 						break;
 					}
@@ -32,7 +34,7 @@ public class DefaultMapDisplayer implements IMapDisplayer {
 			}
 			mapAsString += "\n";
 		}
-		System.out.println(mapAsString);
+		TextHelper.displayText(mapAsString);
 		return mapAsString;
 	}
 }

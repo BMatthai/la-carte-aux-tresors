@@ -4,15 +4,15 @@ public class Treasures extends Entity {
 
 	int number;
 	
-	public Treasures(int pos_x, int pos_y, int number) {
-		super(pos_x, pos_y);
+	public Treasures(int positionX, int positionY, int number) {
+		super(positionX, positionY);
 		this.number = number;
 		this.isBlockingCase = false;
 	}
 	
 	@Override
 	public String textualRepresentation() {
-		String string = String.format("T - %d - %d - %d", pos_x, pos_y, number);
+		String string = String.format("T - %d - %d - %d", positionX, positionY, number);
 		return string;
 	}
 
