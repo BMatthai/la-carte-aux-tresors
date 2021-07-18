@@ -1,35 +1,38 @@
-package main;
+package main.mapdisplayer;
 
 import java.util.List;
 
 import model.Entity;
-import model.LCATMap;
+import model.TreasureMap;
 
 public class DefaultMapDisplayer implements IMapDisplayer {
 
 	@Override
-	public void displayMap(LCATMap map) {
+	public String displayMap(TreasureMap map) {
 		int width = map.getWidth();
 		int height = map.getHeight();
 		List<Entity> entities = map.getEntities();
-		Entity cur_entity;
+		Entity curEntity;
+		String mapAsString = "";
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
 				
 				for (int k = 0; k < entities.size(); k++) {
-					cur_entity = entities.get(k);
-					if (cur_entity.getPos_x() == j && cur_entity.getPos_y() == i) {
-						System.out.print(cur_entity.defaultRepresentation());
+					curEntity = entities.get(k);
+					if (curEntity.getPos_x() == j && curEntity.getPos_y() == i) {
+						mapAsString += curEntity.defaultRepresentation();
 						break;
 					}
 					else if (k == entities.size() - 1) {
-						System.out.print(".\t");	
+						mapAsString += ".\t";
 					}
 				}	
 			
 			}
-			System.out.println("");
+			mapAsString += "\n";
 		}
+		System.out.println(mapAsString);
+		return mapAsString;
 	}
 
 }

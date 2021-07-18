@@ -1,11 +1,10 @@
-package main;
+package main.mapreader;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import model.LCATMap;
-import model.Entity;
+import model.TreasureMap;
 import model.Mountain;
 import model.Treasures;
 import model.Adventurer;
@@ -14,9 +13,9 @@ import misc.Constants;
 
 public class DefaultMapReader implements IMapReader {
 
-	private LCATMap map;
+	private TreasureMap map;
 	
-	public LCATMap readMap(String path) {
+	public TreasureMap readMap(String path) {
 		
 		BufferedReader bufferedReader;
 		
@@ -60,13 +59,13 @@ public class DefaultMapReader implements IMapReader {
 		}				
 	}
 	
-	private LCATMap parseMap(String mapLine) {
-		LCATMap map;
+	private TreasureMap parseMap(String mapLine) {
+		TreasureMap map;
 		
 		String[] parts = mapLine.split(" - ");
 		int width = Integer.parseInt(parts[1]);
 		int height = Integer.parseInt(parts[2]);
-		map = new LCATMap(width, height);
+		map = new TreasureMap(width, height);
 
 		return map;
 	}
@@ -120,20 +119,5 @@ public class DefaultMapReader implements IMapReader {
 		
 		int orientationAsInt = orientationAsIntFromString(orientation);
 		return new Adventurer(name, pos_x, pos_y, orientationAsInt, sequence);
-	}
-	
-	
-	
-//	private Entity parseEntity(String mapLine) {
-//		Mountain entity;
-//		
-//		entity = new Mountain();
-//		
-//		return entity;
-//		
-//		
-//	}
-	
-
-	
+	}	
 }

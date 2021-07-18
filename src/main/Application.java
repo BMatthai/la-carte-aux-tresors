@@ -1,6 +1,13 @@
 package main;
 
-import model.LCATMap;
+import main.mapdisplayer.DefaultMapDisplayer;
+import main.mapdisplayer.IMapDisplayer;
+import main.mapdisplayer.TextualMapDisplayer;
+import main.mapreader.DefaultMapReader;
+import main.mapreader.IMapReader;
+import main.procedurer.DefaultProcedureExecuter;
+import main.procedurer.IProcedureExecuter;
+import model.TreasureMap;
 
 public class Application {
 
@@ -10,16 +17,15 @@ public class Application {
 		IMapDisplayer textualMapDisplayer = new TextualMapDisplayer();
 		IMapDisplayer defaultMapDisplayer = new DefaultMapDisplayer();
 		
-		LCATMap map;
+		TreasureMap map;
 		
 		map = mapReader.readMap("SAMPLES/map1.lcat");
-		textualMapDisplayer.displayMap(map);
-		defaultMapDisplayer.displayMap(map);
+//		textualMapDisplayer.displayMap(map);
+//		defaultMapDisplayer.displayMap(map);
 		
 		IProcedureExecuter defaultProcedureExecuter = new DefaultProcedureExecuter();
-		LCATMap newMap = defaultProcedureExecuter.executeProcedure(map);
+		TreasureMap newMap = defaultProcedureExecuter.executeProcedure(map);
 		
-		System.out.println("-------------");
 		defaultMapDisplayer.displayMap(newMap);
 	}
 
