@@ -1,6 +1,9 @@
 package model;
 
-public abstract class Entity {
+import main.mapdisplayer.IRepresentableAsMap;
+import main.mapdisplayer.IRepresentableAsText;
+
+public abstract class Entity implements IRepresentableAsText, IRepresentableAsMap {
 
 	protected int pos_x;
 	protected int pos_y;
@@ -37,8 +40,4 @@ public abstract class Entity {
 		this.isBlockingCase = isBlockingCase;
 	}
 
-	//	public abstract String toString();
-	public abstract String textualRepresentation();
-	public abstract String defaultRepresentation();
-	
 }

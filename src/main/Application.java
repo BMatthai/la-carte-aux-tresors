@@ -20,8 +20,8 @@ public class Application {
 		TreasureMap map;
 		
 		map = mapReader.readMap("SAMPLES/map1.lcat");
-//		textualMapDisplayer.displayMap(map);
-//		defaultMapDisplayer.displayMap(map);
+		textualMapDisplayer.displayMap(map);
+		defaultMapDisplayer.displayMap(map);
 		
 		IProcedureExecuter defaultProcedureExecuter = new DefaultProcedureExecuter();
 		TreasureMap newMap = defaultProcedureExecuter.executeProcedure(map);

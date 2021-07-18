@@ -1,11 +1,11 @@
 package model;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
-public class TreasureMap {
+import main.mapdisplayer.IRepresentableAsText;
+
+public class TreasureMap implements IRepresentableAsText {
 
 	int width;
 	int height;
@@ -67,6 +67,7 @@ public class TreasureMap {
 				.filter(l -> l.getPos_x() == x && l.getPos_y() == y)
 				.count() > 0;
 	}
+
 	
 	public void addEntity(Entity entity) {
 		this.entities.add(entity);
@@ -88,12 +89,6 @@ public class TreasureMap {
 		this.height = height;
 	}
 	
-//	public String toString() {
-//		String string = String.format("C - %d - %d", width, height);
-//		
-//		return string;
-//	}
-
 	public List<Entity> getEntities() {
 		return entities;
 	}
@@ -102,4 +97,8 @@ public class TreasureMap {
 		this.entities = entities;
 	}
 	
+	@Override
+	public String textualRepresentation() {
+		return String.format("C - %d - %d", width, height);
+	}
 }

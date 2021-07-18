@@ -71,22 +71,24 @@ public class DefaultProcedureExecuter implements IProcedureExecuter {
 		if (map.isPositionFree(new_pos_x, new_pos_y)) adventurer.setPosition(new_pos_x, new_pos_y);
 		
 		if (map.isPositionATreasure(new_pos_x, new_pos_y)) {
-			
+			// TODO Pickup treasure
 		}
 	}
 	
-	private void pickUpTreasure(Adventurer adventurer, TreasureMap map) {
-		int pos_x = adventurer.getPos_x();
-		int pos_y = adventurer.getPos_y();
-		
-		if (!map.isPositionATreasure(pos_x, pos_y)) return;
-		
-		Treasure treasure = map.getTreasures()
-				.stream()
-				.filter(l -> l.getPos_x() == pos_x && l.getPos_y() == pos_y)
-				.orElse();
-		
-	}
+//	private void pickUpTreasure(Adventurer adventurer, TreasureMap map) {
+//		int pos_x = adventurer.getPos_x();
+//		int pos_y = adventurer.getPos_y();
+//		
+//		if (!map.isPositionATreasure(pos_x, pos_y)) return;
+//		
+//		// TODO Pickup 
+//		
+////		Treasure treasure = map.getTreasures()
+////				.stream()
+////				.filter(l -> l.getPos_x() == pos_x && l.getPos_y() == pos_y)
+////				.findFirst().orElse();
+//		
+//	}
 	
 	private boolean isProcedureFinished(List<Adventurer> adventurers) {
 		int index_sum = adventurers.stream().mapToInt(l -> l.getCurIndexInSequence()).sum();

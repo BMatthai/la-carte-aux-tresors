@@ -14,6 +14,8 @@ public class DefaultMapDisplayer implements IMapDisplayer {
 		List<Entity> entities = map.getEntities();
 		Entity curEntity;
 		String mapAsString = "";
+		
+		// TODO Improve algorithm. Display adventurer on top of a treasure.
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
 				
@@ -27,12 +29,10 @@ public class DefaultMapDisplayer implements IMapDisplayer {
 						mapAsString += ".\t";
 					}
 				}	
-			
 			}
 			mapAsString += "\n";
 		}
 		System.out.println(mapAsString);
 		return mapAsString;
 	}
-
 }

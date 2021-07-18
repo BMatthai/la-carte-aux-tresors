@@ -7,10 +7,10 @@ public class TextualMapDisplayer implements IMapDisplayer {
 
 	public String displayMap(TreasureMap map) {
 		String mapAsString = "";
-		mapAsString += String.format("%s\n",map);
+		mapAsString += String.format("%s\n", map.textualRepresentation());
 		
 		for (Entity entity : map.getEntities()) 
-			mapAsString += String.format("%s\n",entity.textualRepresentation());
+			mapAsString += String.format("%s\n", entity.textualRepresentation());
 
 		System.out.println(mapAsString);
 		return mapAsString;
