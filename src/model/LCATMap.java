@@ -34,8 +34,16 @@ public class LCATMap {
 				.collect(Collectors.toList());
 	}
 	
+	public List<Mountain> getMountains() {
+		return this.entities
+				.stream()
+				.filter(l -> l instanceof Mountain)
+				.map(m -> (Mountain) m)
+				.collect(Collectors.toList());
+	}
+	
+	
 	public boolean isPositionFree(int x, int y) {
-
 		if (x < 0) return false;
 		if (x >= width) return false;
 		if (y < 0) return false;
@@ -43,7 +51,7 @@ public class LCATMap {
 		
 		return entities
 				.stream()
-				.filter(l -> l.isBlockingCase())
+				.filter(l -> l.isBlockingCase() && l.getPos_x() == x && l.getPos_y() == y)
 				.count() < 1;	
 	}
 	
