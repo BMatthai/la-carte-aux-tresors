@@ -4,6 +4,7 @@ public abstract class Entity {
 
 	protected int pos_x;
 	protected int pos_y;
+	protected boolean isBlockingCase;
 	
 	public Entity(int pos_x, int pos_y) {
 		super();
@@ -26,8 +27,17 @@ public abstract class Entity {
 	public void setPos_y(int pos_y) {
 		this.pos_y = pos_y;
 	}
+	
 
-//	public abstract String toString();
+	public boolean isBlockingCase() {
+		return isBlockingCase;
+	}
+
+	public void setBlockingCase(boolean isBlockingCase) {
+		this.isBlockingCase = isBlockingCase;
+	}
+
+	//	public abstract String toString();
 	public abstract String textualRepresentation();
 	public abstract String defaultRepresentation();
 	

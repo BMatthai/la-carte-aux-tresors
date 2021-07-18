@@ -4,6 +4,7 @@ public class Mountain extends Entity {
 
 	public Mountain(int pos_x, int pos_y) {
 		super(pos_x, pos_y);
+		this.isBlockingCase = true;
 	}
 
 	@Override

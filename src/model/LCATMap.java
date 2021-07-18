@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class LCATMap {
 
@@ -16,7 +17,36 @@ public class LCATMap {
 		this.height = height;
 		this.entities = new ArrayList<Entity>();
 	}
+	
+	public LCATMap(LCATMap originalMap) {
+		super();
+		this.width = originalMap.width;
+		this.height = originalMap.height;
+		this.entities = originalMap.entities;	
+	}
 
+	
+	public List<Adventurer> getAdventurers() {
+		return this.entities
+				.stream()
+				.filter(l -> l instanceof Adventurer)
+				.map(m -> (Adventurer) m)
+				.collect(Collectors.toList());
+	}
+	
+	public boolean isPositionFree(int x, int y) {
+
+		if (x < 0) return false;
+		if (x >= width) return false;
+		if (y < 0) return false;
+		if (y >= height) return false;
+		
+		return entities
+				.stream()
+				.filter(l -> l.isBlockingCase())
+				.count() < 1;	
+	}
+	
 	public void addEntity(Entity entity) {
 		this.entities.add(entity);
 	}
