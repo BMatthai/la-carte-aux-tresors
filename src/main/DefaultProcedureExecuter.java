@@ -68,8 +68,7 @@ public class DefaultProcedureExecuter implements IProcedureExecuter {
 				break;
 			default:
 		}
-		if (map.isPositionFree(new_pos_x, new_pos_y)) adventurer.setPosition(new_pos_x, new_pos_y);
-		
+		if (map.isPositionFree(new_pos_x, new_pos_y)) adventurer.setPosition(new_pos_x, new_pos_y);	
 	}
 	
 	private boolean isProcedureFinished(List<Adventurer> adventurers) {
