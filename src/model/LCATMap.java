@@ -1,0 +1,84 @@
+package model;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class LCATMap {
+
+	int width;
+	int height;
+	private List<Entity> entities;
+	
+	public LCATMap(int width, int height) {
+		super();
+		this.width = width;
+		this.height = height;
+		this.entities = new ArrayList<Entity>();
+	}
+	
+	public LCATMap(LCATMap originalMap) {
+		super();
+		this.width = originalMap.width;
+		this.height = originalMap.height;
+		this.entities = originalMap.entities;	
+	}
+
+	
+	public List<Adventurer> getAdventurers() {
+		return this.entities
+				.stream()
+				.filter(l -> l instanceof Adventurer)
+				.map(m -> (Adventurer) m)
+				.collect(Collectors.toList());
+	}
+	
+	public boolean isPositionFree(int x, int y) {
+
+		if (x < 0) return false;
+		if (x >= width) return false;
+		if (y < 0) return false;
+		if (y >= height) return false;
+		
+		return entities
+				.stream()
+				.filter(l -> l.isBlockingCase())
+				.count() < 1;	
+	}
+	
+	public void addEntity(Entity entity) {
+		this.entities.add(entity);
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	
+	public String toString() {
+		String string = String.format("C - %d - %d", width, height);
+		
+		return string;
+	}
+
+	public List<Entity> getEntities() {
+		return entities;
+	}
+
+	public void setEntities(List<Entity> entities) {
+		this.entities = entities;
+	}
+	
+}
